@@ -16,7 +16,6 @@ class MenuActivity : AppCompatActivity() {
         } catch (e: NullPointerException) {}
         val sharedPreferences = getSharedPreferences(userData.SP_NAME, Context.MODE_PRIVATE)
 
-        val bundle = intent.extras
         val nama = sharedPreferences.getString(userData.FIELD_USERNAME, "Belum Ada Data")
 
         tvVsPemain.setText("$nama VS Pemain")
@@ -30,6 +29,10 @@ class MenuActivity : AppCompatActivity() {
         ivVsCom.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        btnProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 }
