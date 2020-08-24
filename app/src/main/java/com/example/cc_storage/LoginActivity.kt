@@ -13,15 +13,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val sharedPreferences = getSharedPreferences(userData.SP_NAME, Context.MODE_PRIVATE)
-        val usr = sharedPreferences.getString(userData.FIELD_USERNAME, "Belum Ada Data")
-        val pass = sharedPreferences.getString(userData.FIELD_PASSWORD, "Belum Ada Data")
 
         btnLogin.setOnClickListener {
             val username = etUsername.text.toString()
             val password = etPassword.text.toString()
             if (username == "" || password == ""){
                 Snackbar.make(it, "Username dan Password harus terisi", Snackbar.LENGTH_LONG).show()
-            } else if (username != usr || password != pass){
+            } else if (username != sharedPreferences.getString(userData.FIELD_USERNAME, "Belum Ada Data") || password != (sharedPreferences.getString(userData.FIELD_PASSWORD, "Belum Ada Data"))){
                 Snackbar.make(it, "Username atau Password Salah", Snackbar.LENGTH_LONG).show()
             } else {
                 startActivity(Intent(this,MenuActivity::class.java))
@@ -31,7 +29,6 @@ class LoginActivity : AppCompatActivity() {
 
         btnReset.setOnClickListener {
             val editor = sharedPreferences.edit()
-            editor.clear()
 
             editor.putString(userData.FIELD_USERNAME, "sabrina")
             editor.putString(userData.FIELD_PASSWORD, "binar123")

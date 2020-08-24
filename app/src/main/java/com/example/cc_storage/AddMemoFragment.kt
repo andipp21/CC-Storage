@@ -12,6 +12,8 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_add_memo.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.text.DateFormat
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,23 +61,24 @@ class AddMemoFragment : DialogFragment() {
             dismiss()
         }
 
+        val tanggal = Date().time
+
         btnTambah.setOnClickListener{
             val memo = Memo(
                 null,
                 etMemo.text.toString(),
                 etTanggal.text.toString()
             )
-
             
             GlobalScope.launch {
                 val totalSaved:Long = db.memoDao().add(memo)
 
                 activity?.runOnUiThread {
                     if (totalSaved >0){
-                        Snackbar.make(it, "Data Memo Tersimpan", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view.rootView, "Data Memo Tersimpan", Snackbar.LENGTH_LONG).show()
                         dismiss()
                     } else {
-                        Snackbar.make(it, "Data Memo Gagal Tersimpan", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view.rootView, "Data Memo Gagal Tersimpan", Snackbar.LENGTH_LONG).show()
                     }
                 }
             }

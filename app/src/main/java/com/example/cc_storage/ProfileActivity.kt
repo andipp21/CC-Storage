@@ -99,6 +99,6 @@ class ProfileActivity : AppCompatActivity() {
     fun showEditDialog(memo: Memo){
         val fm  = supportFragmentManager
 
-        EditMemoFragment.dataMemo(memo).show(fm, "Edit Memo Fragment")
+        EditMemoFragment.setDataMemo(memo).show(fm, "Edit Memo Fragment")
     }
 }

@@ -24,7 +24,6 @@ class MemoAdapter(val listMemo: List<Memo>): RecyclerView.Adapter<MemoAdapter.Vi
             tanggal.setText(dataListin2.tanggal)
 
             itemView.setOnClickListener {
-
                 activity?.showEditDialog(dataListin2)
             }
         }

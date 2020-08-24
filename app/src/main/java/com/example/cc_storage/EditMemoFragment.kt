@@ -76,10 +76,10 @@ class EditMemoFragment : DialogFragment() {
 
                 activity?.runOnUiThread {
                     if (rowDeleted >0){
-                        Snackbar.make(it, "Data Memo Terhapus", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view.rootView, "Data Memo Terhapus", Snackbar.LENGTH_LONG).show()
                         dismiss()
                     } else {
-                        Snackbar.make(it, "Data Memo Gagal Terhapus", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view.rootView, "Data Memo Gagal Terhapus", Snackbar.LENGTH_LONG).show()
                     }
                     (activity as ProfileActivity).fetchData()
                 }
@@ -97,10 +97,10 @@ class EditMemoFragment : DialogFragment() {
 
                 activity?.runOnUiThread {
                     if (memoUpdated >0){
-                        Snackbar.make(it, "Data Memo Terupdate", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view.rootView, "Data Memo Terupdate", Snackbar.LENGTH_LONG).show()
                         dismiss()
                     } else {
-                        Snackbar.make(it, "Data Memo Gagal Terupdate", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(view.rootView, "Data Memo Gagal Terupdate", Snackbar.LENGTH_LONG).show()
                     }
                     (activity as ProfileActivity).fetchData()
                 }
@@ -113,7 +113,7 @@ class EditMemoFragment : DialogFragment() {
     companion object {
         lateinit var memo: Memo
 
-        fun dataMemo(dataMemo: Memo): EditMemoFragment {
+        fun setDataMemo(dataMemo: Memo): EditMemoFragment {
             memo = dataMemo
             return EditMemoFragment()
         }

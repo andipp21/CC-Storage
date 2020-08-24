@@ -21,6 +21,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            versionNameSuffix kotlin_version
+            applicationIdSuffix kotlin_version
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
         }
     }
 
